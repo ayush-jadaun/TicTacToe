@@ -1,67 +1,113 @@
-# Tic-Tac-Toe (C++)
+# Enhanced Tic-Tac-Toe (C++)
 
-This is a simple Tic-Tac-Toe game implemented in C++ that supports both single-player mode (vs a computer opponent) and multiplayer mode (two players).
+A feature-rich Tic-Tac-Toe implementation in C++ that supports variable board sizes, configurable win conditions, and multiple difficulty levels.
 
 ## Features
-- Play against another player or a computer opponent.
-- Uses the **Minimax algorithm** for optimal moves.
-- Simple text-based interface.
-- Supports player selection of `X` or `O` in single-player mode.
+
+* **Flexible Game Parameters**:
+   * Variable board size (3x3, 4x4, 5x5, etc.)
+   * Configurable win condition (3-in-a-row, 4-in-a-row, etc.)
+* **Multiple Game Modes**:
+   * Single-player against AI with three difficulty levels
+   * Multiplayer mode for two human players
+* **Advanced AI Opponent**:
+   * Easy mode: Random moves
+   * Medium mode: Minimax algorithm with limited depth
+   * Hard mode: Minimax algorithm with optimized depth
+   * Alpha-beta pruning for improved performance
+   * Opening book for common positions (3x3 standard board)
+* **Game Management**:
+   * Save/load game functionality
+   * Undo move capability
+   * Score tracking across multiple games
+* **User-Friendly Interface**:
+   * Dynamic board display adapts to board size
+   * Clear menu system and instructions
+   * Input validation and error handling
 
 ## How to Play
-1. Compile the code using a C++ compiler (e.g., g++).
-2. Run the executable.
-3. Choose the mode:
-   - `1` for Single-player (vs computer opponent)
-   - `2` for Multiplayer
-4. If playing against the computer, choose your symbol (`X` or `O`).
-5. Enter your move by selecting a position (1-9) corresponding to the board layout:
-   ```
-   1 | 2 | 3
-   --|---|--
-   4 | 5 | 6
-   --|---|--
-   7 | 8 | 9
-   ```
-6. The game continues until a player wins or the board is full.
 
-## Compilation & Execution
-### Using g++:
+1. Compile the code using a C++ compiler:
+
 ```sh
- g++ -o tic_tac_toe tic_tac_toe.cpp
- ./tic_tac_toe
+g++ -o tictactoe tictactoe.cpp
 ```
 
-## Minimax Algorithm (Game Strategy)
-The computer opponent is implemented using the **Minimax algorithm**, a recursive strategy for decision-making in games. This algorithm evaluates all possible moves and selects the best possible outcome to ensure an optimal strategy.
+2. Run the executable:
 
-### Learn More About Minimax:
-- [Minimax Algorithm Explained](https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/)
-
-⚠ **Note:** While often referred to as "AI," this implementation does not involve machine learning or neural networks. It is purely a rule-based approach that guarantees the best possible move.
-
-## Example Gameplay
+```sh
+./tictactoe
 ```
-Tic-Tac-Toe! Mode:
-1. Single (vs Computer)
-2. Multi
-Choose: 1
-Your symbol (X/O): X
 
-X | O | X
---|---|--
-  | X | O
---|---|--
-O |   |  
+3. Follow the prompts to set up your game:
+   * Choose board size (e.g., 3 for 3x3 board)
+   * Set win condition (e.g., 3 for 3-in-a-row)
+   * Select game mode (Single player or Multiplayer)
+   * If playing against AI, choose difficulty level
+4. During gameplay:
+   * Enter row and column numbers to make your move (e.g., "1 2")
+   * Use special commands as described in the Command Reference section below
+5. The game continues until a player wins or the board is full.
 
-Player X, your move (1-9): 8
+## Board Layout
+
+For a standard 3x3 board, positions are numbered as follows:
+
 ```
+  1 2 3
+1 X | O | X
+  ---------
+2   | X | O
+  ---------
+3 O |   |  
+```
+
+Enter row and column numbers to make your move. For example, "1 2" would place your symbol in the first row, second column.
+
+## Command Reference
+
+During gameplay, you can use the following commands:
+
+| Command | Description |
+| ------- | ----------- |
+| `row column` | Make a move (e.g., "1 2" for first row, second column) |
+| `-1 1` | Undo your last move |
+| `-1 2` | Save the current game |
+| `-1 3` | Load a previously saved game |
+
+Example usage:
+* To place your symbol in the top-right corner: `1 3`
+* To undo your last move: `-1 1`
+* To save the current game: `-1 2`
+* To load a saved game: `-1 3`
+
+## Game Setup Options
+
+When starting the game, you'll be prompted to configure several options:
+
+| Option | Description | Valid Inputs |
+| ------ | ----------- | ------------ |
+| Board Size | Dimensions of the square board | Any positive integer (e.g., 3 for 3x3) |
+| Win Condition | Number of marks in a row needed to win | Integer between 1 and board size |
+| Game Mode | Single player or multiplayer | 1 (Single) or 2 (Multi) |
+| Difficulty | AI difficulty level (single player only) | 1 (Easy), 2 (Medium), or 3 (Hard) |
+
+## Algorithm Details
+
+The AI opponent uses the Minimax algorithm with alpha-beta pruning:
+* **Minimax**: A recursive decision-making algorithm that evaluates all possible moves to determine the optimal play.
+* **Alpha-Beta Pruning**: An optimization technique that reduces the number of nodes evaluated in the search tree.
+* **Opening Book**: For standard 3x3 games, common optimal moves are pre-programmed for faster play.
+* **Difficulty Adjustment**: The algorithm's search depth is limited based on the chosen difficulty level.
 
 ## Future Improvements
-- Add a GUI for better user experience.
-- Implement an AI difficulty level.
-- Add an option to restart the game.
+
+* Graphical user interface (GUI)
+* Network multiplayer support
+* Additional AI strategies
+* Game statistics and analytics
+* Customizable symbols and themes
 
 ## License
-This project is open-source. Feel free to modify and improve it!
 
+This project is open-source. Feel free to modify and improve it!
